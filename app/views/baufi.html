@@ -17,11 +17,18 @@
         <td class='euro'><div class='euro' ng-bind='provisionBetrag() | euro'/></td>
       </tr>
 
+      <!-- <tr> -->
+      <!--   <td><label class='control-label' for='steuer'>Grunderwerbssteuer (Prozent)</label></td> -->
+      <!--   <td><input class='form-control' ng-model='steuer'></td> -->
+      <!--   <td class='euro'><span class='euro' ng-bind='steuerBetrag() | euro'></span></td> -->
+      <!-- </tr> -->
+
       <tr>
         <td><label class='control-label' for='steuer'>Grunderwerbssteuer (Prozent)</label></td>
-        <td><input class='form-control' ng-model='steuer'></td>
+        <td><select class='form-control' ng-model='steuer' ng-options='bla.steuer as bla.name + " (" + bla.steuer + "%)" for bla in grunderwerbssteuern'></td>
         <td class='euro'><span class='euro' ng-bind='steuerBetrag() | euro'></span></td>
       </tr>
+
 
       <tr>
         <td><label class='control-label' for='steuer'>Notar/Gerichtskosten (Auslagen):</label></td>
@@ -48,13 +55,13 @@
     <table class='table table-striped'>
       <tr>
         <td><label class='control-label' for='provision'>Eigenkapital</label></td>
-        <td><input class='form-control' ng-model='eigenkaptial'></td>
-        <td class='euro' style='min-width: 150px'><div ng-bind='eigenkaptial | euro'></div></td>
+        <td><input class='form-control' ng-model='eigenkapital'></td>
+        <td class='euro' style='min-width: 150px'><div ng-bind='eigenkapital | euro'></div></td>
       </tr>
       <tr>
         <td><label class='control-label' for='provision'>Eigenkapital (Familie+Freunde)</label></td>
-        <td><input class='form-control' ng-model='eigenkaptial2'></td>
-        <td class='euro'><div ng-bind='eigenkaptial2 | euro'></div></td>
+        <td><input class='form-control' ng-model='eigenkapital2'></td>
+        <td class='euro'><div ng-bind='eigenkapital2 | euro'></div></td>
       </tr>
       <tr>
         <td><strong>Summe Eigenkapital</strong></td>
@@ -112,7 +119,7 @@
         <td><strong>Laufzeit</strong></td>
         <td></td>
         <td class='euro'>
-          <div> {{laufzeitN()}} Monate = {{laufzeitString()}}</div>
+          <div> {{laufzeitString()}}</div>
           <small>Annuitätendarlehen</small>
         </td>
       </tr>
