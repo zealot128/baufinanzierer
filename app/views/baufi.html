@@ -1,5 +1,6 @@
 <div class="jumbotron">
   <h1>Baufinanzierungs-Rechner</h1>
+  <p>Ohne Gewähr.</p>
 </div>
 
 <div class='row'>
@@ -25,7 +26,7 @@
 
       <tr>
         <td><label class='control-label' for='steuer'>Grunderwerbssteuer (Prozent)</label></td>
-        <td><select class='form-control' ng-model='steuer' ng-options='bla.steuer as bla.name + " (" + bla.steuer + "%)" for bla in grunderwerbssteuern'></td>
+        <td><select class='form-control' ng-model='steuer' ng-options='bla.steuer as bla.name + " (" + bla.steuer + "%)" for bla in grunderwerbssteuern'/></td>
         <td class='euro'><span class='euro' ng-bind='steuerBetrag() | euro'></span></td>
       </tr>
 
@@ -123,10 +124,6 @@
           <small>Annuitätendarlehen</small>
         </td>
       </tr>
-
     </table>
-
   </div>
-
-
 </div>
