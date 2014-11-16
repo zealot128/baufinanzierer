@@ -1,0 +1,125 @@
+<div class="jumbotron">
+  <h1>Baufinanzierungs-Rechner</h1>
+</div>
+
+<div class='row'>
+  <div class='col-sm-6'>
+    <h3>Kosten</h3>
+    <table class='table table-striped'>
+      <tr>
+        <td> <label class='control-label' for='kaufpreis'>Kaufpreis (EUR):</label> </td>
+        <td> <input class='form-control' ng-model='kaufpreis'> </td>
+        <td class='euro'><div ng-bind='kaufpreis | euro'/></td>
+      </tr>
+      <tr>
+        <td><label class='control-label' for='provision'>Maklerprovision (Prozent)</label></td>
+        <td><input class='form-control' ng-model='provision'></td>
+        <td class='euro'><div class='euro' ng-bind='provisionBetrag() | euro'/></td>
+      </tr>
+
+      <tr>
+        <td><label class='control-label' for='steuer'>Grunderwerbssteuer (Prozent)</label></td>
+        <td><input class='form-control' ng-model='steuer'></td>
+        <td class='euro'><span class='euro' ng-bind='steuerBetrag() | euro'></span></td>
+      </tr>
+
+      <tr>
+        <td><label class='control-label' for='steuer'>Notar/Gerichtskosten (Auslagen):</label></td>
+        <td><input class='form-control' ng-model='auslagen'></td>
+        <td class='euro'><span class='euro' ng-bind='auslagenBetrag() | euro'></span></td>
+      </tr>
+
+      <tr>
+        <td><strong>Kaufnebenkosten:</strong></td>
+        <td></td>
+        <td class='euro'><span class='euro' ng-bind='kaufnebenkosten() | euro'></span></td>
+      </tr>
+      <tr>
+        <td><strong>Gesamtkosten:</strong></td>
+        <td></td>
+        <td class='euro'><strong class='euro' ng-bind='kosten() | euro'></strong></td>
+      </tr>
+
+    </table>
+
+  </div>
+  <div class='col-sm-6'>
+    <h3>Finanzierung</h3>
+    <table class='table table-striped'>
+      <tr>
+        <td><label class='control-label' for='provision'>Eigenkapital</label></td>
+        <td><input class='form-control' ng-model='eigenkaptial'></td>
+        <td class='euro' style='min-width: 150px'><div ng-bind='eigenkaptial | euro'></div></td>
+      </tr>
+      <tr>
+        <td><label class='control-label' for='provision'>Eigenkapital (Familie+Freunde)</label></td>
+        <td><input class='form-control' ng-model='eigenkaptial2'></td>
+        <td class='euro'><div ng-bind='eigenkaptial2 | euro'></div></td>
+      </tr>
+      <tr>
+        <td><strong>Summe Eigenkapital</strong></td>
+        <td></td>
+        <td class='euro'><div ng-bind='eigenkapitalBetrag() | euro'></div></td>
+      </tr>
+      <tr>
+        <td><strong>Mindestkapital für 100% Finanzierung</strong></td>
+        <td></td>
+        <td class='euro' ng-class='{success: eigenkapitalBetrag() >= min(100)}'>
+          <div ng-bind='min(100) | euro'></div>
+          <small ng-bind='(min(100) - eigenkapitalBetrag()) | euro'></small>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Mindestkapital für 90% Finanzierung</strong></td>
+        <td></td>
+        <td class='euro' ng-class='{success: eigenkapitalBetrag() >= min(90)}'>
+          <div ng-bind='min(90) | euro'></div>
+          <small ng-bind='(min(90) - eigenkapitalBetrag()) | euro'></small>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Kreditsumme</strong></td>
+        <td></td>
+        <td class='euro'>
+          <div style='font-weight: bold' ng-bind='kredit() | euro'></div>
+          <small>{{kreditart()}}% Finanzierung</small>
+        </td>
+      </tr>
+
+      <tr>
+        <td><label for='zinsrate'>Zinsen % p.a.</label></td>
+        <td><input class='form-control' ng-model='zinsrate'></td>
+        <td class='euro'>
+          <div ng-bind='zinsen() | euro'></div>
+        </td>
+      </tr>
+      <tr>
+        <td><label for='tilgungsrate'>Tilgung % p.a.</label></td>
+        <td><input class='form-control' ng-model='tilgungsrate'></td>
+        <td class='euro'>
+          <div ng-bind='tilgung() | euro'></div>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Rate (Monat)</strong></td>
+        <td></td>
+        <td class='euro'>
+          <div style='font-weight: bold' ng-bind='monatsrate() | euro'></div>
+          <small>Pro Jahr: {{rate() | euro}}</small>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Laufzeit</strong></td>
+        <td></td>
+        <td class='euro'>
+          <div> {{laufzeitN()}} Monate = {{laufzeitString()}}</div>
+          <small>Annuitätendarlehen</small>
+        </td>
+      </tr>
+
+    </table>
+
+  </div>
+
+
+</div>
