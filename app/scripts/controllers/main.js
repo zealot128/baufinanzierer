@@ -10,7 +10,7 @@
 angular.module('projectsApp')
   .controller('BaufinanzCtrl', function ($scope,storage, grunderwerbssteuern) {
     $scope.grunderwerbssteuern = grunderwerbssteuern;
-    storage.bind($scope, 'kaufpreis', {defaultValue: 345000});
+    storage.bind($scope, 'kaufpreis', {defaultValue: 250000});
     storage.bind($scope, 'provision', {defaultValue: 5.95});
     storage.bind($scope, 'steuer', {defaultValue: 6.0});
     storage.bind($scope, 'auslagen', {defaultValue: 1.5});
